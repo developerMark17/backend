@@ -1,13 +1,14 @@
-// require('dotenv').config();
+require('dotenv').config();
 var express = require('express');
 var mongoClient = require('mongodb').MongoClient;
 var cors = require("cors");
 const app = express();
 var session = require('express-session');
-const stripe = require('stripe')('sk_test_51OZH1SSFSv1a60ky4y5oPfg0Cc30RTcstyIBYJC9SFl49QGjV1WivNgIxOff9uZJcr9Y0w93zJmZcxGZ2OqNSYvG00FuIpiWeR');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const http = require('http');
 const socketIo = require('socket.io');
+const PORT = process.env.PORT || 5000;
 
 const server = http.createServer(app);
 const io = socketIo(server, {
@@ -23,11 +24,11 @@ app.use(express.urlencoded({
     extended: true
 }))
 app.use(express.json());
-var constr = "mongodb://127.0.0.1:27017";
+var constr =  process.env.MONGO_URI;
 // const constr = functions.config().mongodb.connection_string;
 
 app.use(session({
-    secret: '12324548734jksdfiuhsanmxlieu',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false } // Set secure: true if you're using HTTPS
@@ -162,7 +163,6 @@ app.post('/signin', (req, res) => {
     });
 });
 
-const PORT = 5000;
 server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

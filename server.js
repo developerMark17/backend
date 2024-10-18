@@ -34,25 +34,29 @@ app.use(session({
     cookie: { secure: false } // Set secure: true if you're using HTTPS
 }));
 
+// Root route to handle base URL access
+app.get('/', (req, res) => {
+    res.send('Welcome to the server!');
+});
 
 // Socket.IO connection handler
 var noOfUsersConnected = 0;
 
-    io.on("connection", (socket) => {
-      noOfUsersConnected++;
-      console.log("No of useres connected are " + noOfUsersConnected);
+io.on("connection", (socket) => {
+    noOfUsersConnected++;
+    console.log("No of useres connected are " + noOfUsersConnected);
 
-      socket.on("message", (msg) => {
+    socket.on("message", (msg) => {
         console.log(msg);
         io.emit("message", msg);
         // socket.broadcast.emit("sendMsg", msg)
         // // socket.emit("sendMsg", msg)
-      })
-      socket.on('disconnect', function () {
+    })
+    socket.on('disconnect', function () {
         noOfUsersConnected--;
         console.log("No of users connected are " + noOfUsersConnected);
-      })
     })
+})
 
 // all products
 app.get('/All_Products', (req, res) => {
@@ -91,7 +95,6 @@ app.post('/signup', (req,res)=>{
         })
     })
 })
-
 
 app.post('/payment', async (req, res) => {
     try {
@@ -134,7 +137,6 @@ app.post('/payment', async (req, res) => {
         res.status(500).json({ error: 'An error occurred during payment.' });
     }
 });
-
 
 app.get('/check-login', (req, res) => {
     if (req.session.user) {

@@ -35,6 +35,8 @@ app.use(cors({
     },
     credentials: true
 }));
+app.use(cors());
+
 
 
 app.use(express.urlencoded({

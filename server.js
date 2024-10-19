@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5001;
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: "https://e-commerce-react-7zo5hjk86-airaz-khans-projects.vercel.app", // Update to match the live frontend
+        origin: "https://mern-e-commerce-3cfa3.web.app", // Update to match the live frontend
         methods: ["GET", "POST"],
         credentials: true
     }
@@ -21,7 +21,7 @@ const io = socketIo(server, {
 
 
 const allowedOrigins = [
-    "https://e-commerce-react-7zo5hjk86-airaz-khans-projects.vercel.app",
+    "https://mern-e-commerce-3cfa3.web.app",
     "http://localhost:3000"
 ];
 

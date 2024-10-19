@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5001;
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: "http://localhost:3000", // React client address
+        origin:  ["http://localhost:3000", "https://ecommercereactmark-ljoc9dbqb-airaz-khans-projects.vercel.app"], // React client address
         methods: ["GET", "POST"],
         credentials: true
     }

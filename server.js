@@ -19,7 +19,7 @@ const io = socketIo(server, {
     }
 });
 app.use(cors({ 
-    origin: ["http://localhost:3000", "https://ecommercereactmark-ljoc9dbqb-airaz-khans-projects.vercel.app"],
+    origin: ["http://localhost:3000", "https://ecommercereactmark.vercel.app"],
     credentials: true 
 }));
 app.use(express.urlencoded({

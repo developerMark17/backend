@@ -24,6 +24,8 @@ app.use(express.urlencoded({
     extended: true
 }))
 app.use(express.json());
+
+
 var constr =  process.env.MONGO_URI;
 // const constr = functions.config().mongodb.connection_string;
 

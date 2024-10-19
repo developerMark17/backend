@@ -12,6 +12,7 @@
     "passport-google-oauth2": "^0.2.0",
     "passport-google-oauth20": "^2.0.0",
     "socket.io": "^4.7.5",
-    "stripe": "^15.5.0"
+    "stripe": "^15.5.0",
+    "start":"node server.js"
   }
 }

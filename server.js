@@ -18,8 +18,10 @@ const io = socketIo(server, {
         credentials: true
     }
 });
-
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ 
+    origin: ["http://localhost:3000", "https://ecommercereactmark-ljoc9dbqb-airaz-khans-projects.vercel.app"],
+    credentials: true 
+}));
 app.use(express.urlencoded({
     extended: true
 }))

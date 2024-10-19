@@ -13,32 +13,13 @@ const PORT = process.env.PORT || 5001;
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: "https://e-commerce-six-omega-22.vercel.app/products", // Update to match the live frontend
+        origin: "http://localhost:3000", // React client address
         methods: ["GET", "POST"],
         credentials: true
     }
 });
 
-
-const allowedOrigins = [
-    "https://e-commerce-six-omega-22.vercel.app/products",
-    "http://localhost:3000"
-];
-
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
-    credentials: true
-}));
-app.use(cors());
-
-
-
+app.use(cors({ origin: "https://e-commerce-six-omega-22.vercel.app", credentials: true }));
 app.use(express.urlencoded({
     extended: true
 }))

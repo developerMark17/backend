@@ -19,7 +19,7 @@ const io = socketIo(server, {
     }
 });
 
-app.use(cors({ origin: "https://mern-e-commerce-3cfa3.web.app", credentials: true }));
+app.use(cors({ origin: "https://e-commerce-react-7zo5hjk86-airaz-khans-projects.vercel.app", credentials: true }));
 app.use(express.urlencoded({
     extended: true
 }))

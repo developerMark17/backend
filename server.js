@@ -19,7 +19,7 @@ const io = socketIo(server, {
     }
 });
 
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: "https://mern-e-commerce-3cfa3.web.app", credentials: true }));
 app.use(express.urlencoded({
     extended: true
 }))

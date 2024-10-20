@@ -84,6 +84,27 @@ app.get('/signin',(req, res)=>{
         })
     })
 })
+
+//google
+app.get('/googleUser', (req, res) => {
+    const accessToken = req.query.access_token;
+
+    axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${accessToken}`, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            Accept: 'application/json',
+        },
+    })
+    .then(response => {
+        res.status(200).json(response.data);
+    })
+    .catch(error => {
+        console.error('Error fetching user info:', error);
+        res.status(500).json({ error: 'Failed to fetch user info' });
+    });
+});
+
+
 app.post('/signup', (req,res)=>{
     var user = {
         UserName: req.body.UserName,

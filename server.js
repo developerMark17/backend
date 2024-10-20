@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5001;
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin:  ["http://localhost:3000", "https://ecommercereactmark-ljoc9dbqb-airaz-khans-projects.vercel.app"], // React client address
+        origin:  ["http://localhost:3000", "https://ecommercereactmark.vercel.app"], // React client address
         methods: ["GET", "POST"],
         credentials: true
     }
@@ -152,8 +152,8 @@ app.post('/payment', async (req, res) => {
             payment_method_types: ['card'],
             line_items: lineItems,
             mode: 'payment',
-            success_url: 'http://localhost:3000/success', // Redirect URL after successful payment
-            cancel_url: 'http://localhost:3000/cancel', // Redirect URL if payment is canceled
+            success_url: 'https://ecommercereactmark.vercel.app/success', // Redirect URL after successful payment
+            cancel_url: 'https://ecommercereactmark.vercel.app/cancel', // Redirect URL if payment is canceled
         });
 
         res.json({ id: session.id });
